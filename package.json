@@ -1,0 +1,11 @@
+{
+  "name": "kdp-niche-finder",
+  "version": "1.0.0",
+  "description": "Amazon KDP NicheFinder - Find profitable publishing niches",
+  "scripts": {
+    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npm run dev",
+    "dev": "npm run backend & npm run frontend",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install"
+  }
+}
