@@ -92,7 +92,7 @@ function App() {
   }, [niches, selectedCategories]);
 
   return (
-    <div className="min-h-screen bg-bg-primary">
+    <div className="min-h-screen bg-gray-900">
       <Header />
       <Hero onSearch={handleSearch} isLoading={searchLoading} />
       <CategoryFilters
@@ -117,10 +117,10 @@ function App() {
           <div className="flex-1">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h2 className="text-xl font-bold text-text-primary">
+                <h2 className="text-xl font-bold text-white">
                   {filters.search ? `Results for "${filters.search}"` : 'All Niches'}
                 </h2>
-                <p className="text-sm text-text-secondary mt-1">
+                <p className="text-sm text-gray-400 mt-1">
                   {loading ? 'Analyzing...' : `${totalResults} niches found`}
                 </p>
               </div>
@@ -130,7 +130,7 @@ function App() {
                   {selectedCategories.map((cat) => (
                     <span
                       key={cat}
-                      className="inline-flex items-center gap-1 px-2 py-1 bg-accent-blue/20 text-accent-blue text-xs rounded-full"
+                      className="inline-flex items-center gap-1 px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full"
                     >
                       {cat}
                     </span>
@@ -159,13 +159,13 @@ function App() {
               </div>
             ) : (
               <div className="text-center py-16">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-bg-secondary flex items-center justify-center">
-                  <svg className="w-8 h-8 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-800 flex items-center justify-center">
+                  <svg className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-text-primary mb-2">No niches found</h3>
-                <p className="text-text-secondary max-w-md mx-auto">
+                <h3 className="text-lg font-semibold text-white mb-2">No niches found</h3>
+                <p className="text-gray-400 max-w-md mx-auto">
                   Try adjusting your filters or search for different interests.
                 </p>
               </div>
@@ -174,18 +174,18 @@ function App() {
         </div>
       </main>
 
-      <footer className="border-t border-border py-8 mt-auto">
+      <footer className="border-t border-gray-800 py-8 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent-blue to-accent-purple flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
                 <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <span className="text-sm text-text-secondary">KDP NicheFinder</span>
+              <span className="text-sm text-gray-400">KDP NicheFinder</span>
             </div>
-            <p className="text-sm text-text-secondary">
+            <p className="text-sm text-gray-400">
               Built for serious KDP publishers. Data simulated for demonstration.
             </p>
           </div>

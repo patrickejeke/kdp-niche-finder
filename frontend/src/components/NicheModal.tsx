@@ -61,9 +61,9 @@ export function NicheModal({ niche, onClose, onSave, isSaved }: NicheModalProps)
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 71) return 'text-accent-green';
-    if (score >= 41) return 'text-accent-amber';
-    return 'text-accent-red';
+    if (score >= 71) return 'text-green-500';
+    if (score >= 41) return 'text-yellow-500';
+    return 'text-red-500';
   };
 
   const formatVolume = (vol: number) => {
@@ -85,48 +85,48 @@ export function NicheModal({ niche, onClose, onSave, isSaved }: NicheModalProps)
         onClick={onClose}
       />
       
-      <div className="relative bg-bg-primary border border-border rounded-xl w-full max-w-4xl max-h-[90vh] overflow-hidden animate-fade-in-up">
-        <div className="flex items-center justify-between p-4 border-b border-border">
+      <div className="relative bg-gray-900 border border-gray-700 rounded-xl w-full max-w-4xl max-h-[90vh] overflow-hidden animate-fade-in-up">
+        <div className="flex items-center justify-between p-4 border-b border-gray-700">
           <div className="flex items-center gap-3">
-            <span className="px-2 py-0.5 bg-bg-tertiary text-accent-blue text-xs rounded">
+            <span className="px-2 py-0.5 bg-gray-700 text-blue-400 text-xs rounded">
               {niche.category}
             </span>
-            <h2 className="font-semibold text-text-primary">{niche.name}</h2>
+            <h2 className="font-semibold text-white">{niche.name}</h2>
           </div>
           <div className="flex items-center gap-2">
             {onSave && (
               <button 
                 onClick={() => onSave(niche.id)}
-                className="p-2 rounded-lg hover:bg-bg-tertiary transition-colors"
+                className="p-2 rounded-lg hover:bg-gray-700 transition-colors"
               >
                 <Heart 
-                  className={`w-5 h-5 ${isSaved ? 'fill-accent-red text-accent-red' : 'text-text-secondary'}`} 
+                  className={`w-5 h-5 ${isSaved ? 'fill-red-500 text-red-500' : 'text-gray-400'}`} 
                 />
               </button>
             )}
             <button 
               onClick={onClose}
-              className="p-2 rounded-lg hover:bg-bg-tertiary transition-colors"
+              className="p-2 rounded-lg hover:bg-gray-700 transition-colors"
             >
-              <X className="w-5 h-5 text-text-secondary" />
+              <X className="w-5 h-5 text-gray-400" />
             </button>
           </div>
         </div>
 
-        <div className="flex border-b border-border">
+        <div className="flex border-b border-gray-700">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`px-4 py-3 text-sm font-medium transition-colors relative ${
                 activeTab === tab.id
-                  ? 'text-accent-blue'
-                  : 'text-text-secondary hover:text-text-primary'
+                  ? 'text-blue-500'
+                  : 'text-gray-400 hover:text-white'
               }`}
             >
               {tab.label}
               {activeTab === tab.id && (
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-blue" />
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500" />
               )}
             </button>
           ))}
@@ -135,13 +135,13 @@ export function NicheModal({ niche, onClose, onSave, isSaved }: NicheModalProps)
         <div className="p-6 overflow-y-auto max-h-[calc(90vh-140px)]">
           {activeTab === 'overview' && (
             <div className="space-y-6">
-              <p className="text-text-secondary leading-relaxed">
+              <p className="text-gray-400 leading-relaxed">
                 {niche.description}
               </p>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="bg-bg-secondary border border-border rounded-lg p-4">
-                  <div className="flex items-center gap-2 text-text-secondary text-xs mb-2">
+                <div className="bg-gray-800 border border-gray-700 rounded-lg p-4">
+                  <div className="flex items-center gap-2 text-gray-400 text-xs mb-2">
                     <Target className="w-4 h-4" />
                     Opportunity Score
                   </div>
@@ -149,64 +149,64 @@ export function NicheModal({ niche, onClose, onSave, isSaved }: NicheModalProps)
                     {niche.opportunity_score}
                   </div>
                 </div>
-                <div className="bg-bg-secondary border border-border rounded-lg p-4">
-                  <div className="flex items-center gap-2 text-text-secondary text-xs mb-2">
+                <div className="bg-gray-800 border border-gray-700 rounded-lg p-4">
+                  <div className="flex items-center gap-2 text-gray-400 text-xs mb-2">
                     <DollarSign className="w-4 h-4" />
                     Revenue/mo
                   </div>
-                  <div className="text-xl font-bold font-mono text-accent-green">
+                  <div className="text-xl font-bold font-mono text-green-500">
                     ${niche.monthly_revenue_low.toLocaleString()}-${niche.monthly_revenue_high.toLocaleString()}
                   </div>
                 </div>
-                <div className="bg-bg-secondary border border-border rounded-lg p-4">
-                  <div className="flex items-center gap-2 text-text-secondary text-xs mb-2">
+                <div className="bg-gray-800 border border-gray-700 rounded-lg p-4">
+                  <div className="flex items-center gap-2 text-gray-400 text-xs mb-2">
                     <Users className="w-4 h-4" />
                     Competition
                   </div>
                   <div className="text-xl font-bold font-mono capitalize">
-                    {niche.competition_count.toLocaleString()} <span className="text-sm text-text-secondary">{niche.competition_level}</span>
+                    {niche.competition_count.toLocaleString()} <span className="text-sm text-gray-400">{niche.competition_level}</span>
                   </div>
                 </div>
-                <div className="bg-bg-secondary border border-border rounded-lg p-4">
-                  <div className="flex items-center gap-2 text-text-secondary text-xs mb-2">
+                <div className="bg-gray-800 border border-gray-700 rounded-lg p-4">
+                  <div className="flex items-center gap-2 text-gray-400 text-xs mb-2">
                     <BookOpen className="w-4 h-4" />
                     Total Books
                   </div>
-                  <div className="text-xl font-bold font-mono">
+                  <div className="text-xl font-bold font-mono text-white">
                     {niche.books_count.toLocaleString()}
                   </div>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="bg-bg-secondary border border-border rounded-lg p-4">
-                  <div className="text-text-secondary text-xs mb-2">Avg Price</div>
-                  <div className="text-lg font-bold font-mono">${niche.avg_price.toFixed(2)}</div>
+                <div className="bg-gray-800 border border-gray-700 rounded-lg p-4">
+                  <div className="text-gray-400 text-xs mb-2">Avg Price</div>
+                  <div className="text-lg font-bold font-mono text-white">${niche.avg_price.toFixed(2)}</div>
                 </div>
-                <div className="bg-bg-secondary border border-border rounded-lg p-4">
-                  <div className="text-text-secondary text-xs mb-2">Avg Rating</div>
-                  <div className="text-lg font-bold font-mono text-accent-amber">
+                <div className="bg-gray-800 border border-gray-700 rounded-lg p-4">
+                  <div className="text-gray-400 text-xs mb-2">Avg Rating</div>
+                  <div className="text-lg font-bold font-mono text-yellow-500">
                     {niche.avg_rating.toFixed(1)} <Star className="inline w-4 h-4 fill-current" />
                   </div>
                 </div>
-                <div className="bg-bg-secondary border border-border rounded-lg p-4">
-                  <div className="text-text-secondary text-xs mb-2">Trend</div>
+                <div className="bg-gray-800 border border-gray-700 rounded-lg p-4">
+                  <div className="text-gray-400 text-xs mb-2">Trend</div>
                   <div className="flex items-center gap-1 text-lg font-bold">
                     {niche.trend_direction === 'rising' ? (
-                      <TrendingUp className="w-5 h-5 text-accent-green" />
+                      <TrendingUp className="w-5 h-5 text-green-500" />
                     ) : niche.trend_direction === 'declining' ? (
-                      <TrendingDown className="w-5 h-5 text-accent-red" />
+                      <TrendingDown className="w-5 h-5 text-red-500" />
                     ) : (
-                      <Minus className="w-5 h-5 text-text-secondary" />
+                      <Minus className="w-5 h-5 text-gray-400" />
                     )}
-                    <span className={niche.trend_direction === 'rising' ? 'text-accent-green' : niche.trend_direction === 'declining' ? 'text-accent-red' : 'text-text-secondary'}>
+                    <span className={niche.trend_direction === 'rising' ? 'text-green-500' : niche.trend_direction === 'declining' ? 'text-red-500' : 'text-gray-400'}>
                       {niche.trend_percentage > 0 ? '+' : ''}{niche.trend_percentage}%
                     </span>
                   </div>
                 </div>
-                <div className="bg-bg-secondary border border-border rounded-lg p-4">
-                  <div className="text-text-secondary text-xs mb-2">Avg Reviews</div>
-                  <div className="text-lg font-bold font-mono">
+                <div className="bg-gray-800 border border-gray-700 rounded-lg p-4">
+                  <div className="text-gray-400 text-xs mb-2">Avg Reviews</div>
+                  <div className="text-lg font-bold font-mono text-white">
                     {niche.avg_reviews.toLocaleString()}
                   </div>
                 </div>
@@ -214,15 +214,15 @@ export function NicheModal({ niche, onClose, onSave, isSaved }: NicheModalProps)
 
               {keywords.slice(0, 5).length > 0 && (
                 <div>
-                  <h3 className="font-semibold text-text-primary mb-3">Top Keywords</h3>
+                  <h3 className="font-semibold text-white mb-3">Top Keywords</h3>
                   <div className="flex flex-wrap gap-2">
                     {keywords.slice(0, 5).map((kw) => (
                       <span 
                         key={kw.id}
-                        className="inline-flex items-center gap-2 px-3 py-1.5 bg-bg-secondary border border-border rounded-lg text-sm"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-lg text-sm"
                       >
-                        <span className="text-text-primary">{kw.keyword}</span>
-                        <span className="text-xs text-text-secondary">{formatVolume(kw.search_volume)}</span>
+                        <span className="text-white">{kw.keyword}</span>
+                        <span className="text-xs text-gray-400">{formatVolume(kw.search_volume)}</span>
                       </span>
                     ))}
                   </div>
@@ -238,29 +238,29 @@ export function NicheModal({ niche, onClose, onSave, isSaved }: NicheModalProps)
                   const kws = keywords.filter(k => k.category === cat);
                   return (
                     <div key={cat}>
-                      <h3 className="font-semibold text-text-primary mb-3 capitalize">
+                      <h3 className="font-semibold text-white mb-3 capitalize">
                         {cat} Keywords ({kws.length})
                       </h3>
                       <div className="space-y-2">
                         {kws.map((kw) => (
                           <div 
                             key={kw.id}
-                            className="flex items-center justify-between p-2 bg-bg-secondary border border-border rounded-lg group"
+                            className="flex items-center justify-between p-2 bg-gray-800 border border-gray-700 rounded-lg group"
                           >
                             <div>
-                              <div className="text-sm text-text-primary">{kw.keyword}</div>
-                              <div className="text-xs text-text-secondary">
+                              <div className="text-sm text-white">{kw.keyword}</div>
+                              <div className="text-xs text-gray-400">
                                 {formatVolume(kw.search_volume)} searches/mo
                               </div>
                             </div>
                             <button
                               onClick={() => copyKeyword(kw.keyword)}
-                              className="p-1.5 rounded opacity-0 group-hover:opacity-100 hover:bg-bg-tertiary transition-all"
+                              className="p-1.5 rounded opacity-0 group-hover:opacity-100 hover:bg-gray-700 transition-all"
                             >
                               {copiedKeyword === kw.keyword ? (
-                                <Check className="w-4 h-4 text-accent-green" />
+                                <Check className="w-4 h-4 text-green-500" />
                               ) : (
-                                <Copy className="w-4 h-4 text-text-secondary" />
+                                <Copy className="w-4 h-4 text-gray-400" />
                               )}
                             </button>
                           </div>
@@ -273,7 +273,7 @@ export function NicheModal({ niche, onClose, onSave, isSaved }: NicheModalProps)
 
               {keywords.length > 0 && (
                 <div>
-                  <h3 className="font-semibold text-text-primary mb-3">Search Volume Distribution</h3>
+                  <h3 className="font-semibold text-white mb-3">Search Volume Distribution</h3>
                   <div className="h-64">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart 
@@ -305,7 +305,7 @@ export function NicheModal({ niche, onClose, onSave, isSaved }: NicheModalProps)
           {activeTab === 'trends' && trends.length > 0 && (
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold text-text-primary mb-3">Search Interest (12 Months)</h3>
+                <h3 className="font-semibold text-white mb-3">Search Interest (12 Months)</h3>
                 <div className="h-72">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={trends}>
@@ -346,7 +346,7 @@ export function NicheModal({ niche, onClose, onSave, isSaved }: NicheModalProps)
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <h3 className="font-semibold text-text-primary mb-3">Books Published per Month</h3>
+                  <h3 className="font-semibold text-white mb-3">Books Published per Month</h3>
                   <div className="h-64">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={trends}>
@@ -372,7 +372,7 @@ export function NicheModal({ niche, onClose, onSave, isSaved }: NicheModalProps)
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-text-primary mb-3">Category Health Score</h3>
+                  <h3 className="font-semibold text-white mb-3">Category Health Score</h3>
                   <div className="h-64 flex items-center justify-center">
                     <ResponsiveContainer width="100%" height="100%">
                       <RadarChart data={[
@@ -403,40 +403,40 @@ export function NicheModal({ niche, onClose, onSave, isSaved }: NicheModalProps)
           {activeTab === 'competition' && (
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold text-text-primary mb-3">
+                <h3 className="font-semibold text-white mb-3">
                   Top Competing Books ({competition.length})
                 </h3>
                 <div className="space-y-3">
                   {competition.map((comp, index) => (
                     <div 
                       key={comp.id}
-                      className="flex items-center gap-4 p-3 bg-bg-secondary border border-border rounded-lg"
+                      className="flex items-center gap-4 p-3 bg-gray-800 border border-gray-700 rounded-lg"
                     >
-                      <div className="w-8 h-8 rounded bg-bg-tertiary flex items-center justify-center text-xs font-mono text-text-secondary">
+                      <div className="w-8 h-8 rounded bg-gray-700 flex items-center justify-center text-xs font-mono text-gray-400">
                         #{index + 1}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="font-medium text-text-primary truncate">
+                        <div className="font-medium text-white truncate">
                           {comp.title}
                         </div>
-                        <div className="text-xs text-text-secondary">
+                        <div className="text-xs text-gray-400">
                           by {comp.author} • {comp.categories}
                         </div>
                       </div>
                       <div className="text-right shrink-0">
-                        <div className="flex items-center gap-1 text-accent-amber">
+                        <div className="flex items-center gap-1 text-yellow-500">
                           <Star className="w-3 h-3 fill-current" />
                           <span className="text-sm font-mono">{comp.rating}</span>
                         </div>
-                        <div className="text-xs text-text-secondary">
+                        <div className="text-xs text-gray-400">
                           {comp.reviews.toLocaleString()} reviews
                         </div>
                       </div>
                       <div className="text-right shrink-0">
-                        <div className="text-sm font-mono text-accent-green">
+                        <div className="text-sm font-mono text-green-500">
                           ${parseFloat(String(comp.price)).toFixed(2)}
                         </div>
-                        <div className="text-xs text-text-secondary">
+                        <div className="text-xs text-gray-400">
                           {comp.published_date?.split('-')[0]}
                         </div>
                       </div>
@@ -447,7 +447,7 @@ export function NicheModal({ niche, onClose, onSave, isSaved }: NicheModalProps)
 
               {competition.length > 0 && (
                 <div>
-                  <h3 className="font-semibold text-text-primary mb-3">Price Distribution</h3>
+                  <h3 className="font-semibold text-white mb-3">Price Distribution</h3>
                   <div className="h-48">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart 

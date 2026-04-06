@@ -25,10 +25,10 @@ const iconMap: Record<string, React.ElementType> = {
 
 export function CategoryFilters({ categories, selected, onSelect }: CategoryFiltersProps) {
   return (
-    <section className="border-y border-border bg-bg-secondary/30">
+    <section className="border-y border-gray-800 bg-gray-800/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
-          <span className="text-sm text-text-secondary shrink-0">Quick filters:</span>
+        <div className="flex items-center gap-2 overflow-x-auto pb-2">
+          <span className="text-sm text-gray-400 shrink-0">Quick filters:</span>
           <div className="flex gap-2">
             {categories.map((cat) => {
               const Icon = iconMap[cat.icon] || Palette;
@@ -40,8 +40,8 @@ export function CategoryFilters({ categories, selected, onSelect }: CategoryFilt
                   onClick={() => onSelect(cat.name)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all ${
                     isSelected
-                      ? 'bg-accent-blue text-bg-primary'
-                      : 'bg-bg-tertiary text-text-secondary hover:text-text-primary hover:bg-bg-tertiary/80 border border-border'
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-gray-700 text-gray-300 hover:text-white hover:bg-gray-600 border border-gray-600'
                   }`}
                 >
                   <Icon className="w-4 h-4" />

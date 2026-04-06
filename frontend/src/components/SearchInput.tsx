@@ -67,7 +67,7 @@ export function SearchInput({ onSearch, isLoading }: SearchInputProps) {
     <div ref={containerRef} className="relative w-full max-w-2xl mx-auto">
       <form onSubmit={handleSubmit}>
         <div className="relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-secondary" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
           <input
             ref={inputRef}
             type="text"
@@ -75,16 +75,16 @@ export function SearchInput({ onSearch, isLoading }: SearchInputProps) {
             onChange={(e) => setQuery(e.target.value)}
             onFocus={() => suggestions.length > 0 && setShowSuggestions(true)}
             placeholder="Enter your interests (e.g., dog training, budgeting, keto diet)"
-            className="w-full bg-bg-secondary border-2 border-border rounded-xl pl-12 pr-12 py-4 text-lg text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus:border-accent-blue transition-colors"
+            className="w-full bg-gray-800 border-2 border-gray-700 rounded-xl pl-12 pr-12 py-4 text-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
             disabled={isLoading}
           />
           {query && (
             <button
               type="button"
               onClick={clearInput}
-              className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-bg-tertiary transition-colors"
+              className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-gray-700 transition-colors"
             >
-              <X className="w-5 h-5 text-text-secondary" />
+              <X className="w-5 h-5 text-gray-400" />
             </button>
           )}
         </div>
@@ -92,11 +92,11 @@ export function SearchInput({ onSearch, isLoading }: SearchInputProps) {
         <button
           type="submit"
           disabled={!query.trim() || isLoading}
-          className="mt-4 w-full btn-primary flex items-center justify-center gap-2 text-lg"
+          className="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg transition-all flex items-center justify-center gap-2 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isLoading ? (
             <>
-              <div className="w-5 h-5 border-2 border-bg-primary/30 border-t-bg-primary rounded-full animate-spin" />
+              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
               Analyzing Markets...
             </>
           ) : (
@@ -109,42 +109,42 @@ export function SearchInput({ onSearch, isLoading }: SearchInputProps) {
       </form>
 
       {showSuggestions && suggestions.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-bg-secondary border border-border rounded-xl shadow-xl overflow-hidden z-50">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-gray-800 border border-gray-700 rounded-xl shadow-xl overflow-hidden z-50">
           {suggestions.map((niche) => (
             <button
               key={niche.id}
               onClick={() => handleSuggestionClick(niche)}
-              className="w-full px-4 py-3 text-left hover:bg-bg-tertiary transition-colors flex items-center justify-between group"
+              className="w-full px-4 py-3 text-left hover:bg-gray-700 transition-colors flex items-center justify-between group"
             >
               <div>
-                <div className="text-sm font-medium text-text-primary group-hover:text-accent-blue transition-colors">
+                <div className="text-sm font-medium text-white group-hover:text-blue-400 transition-colors">
                   {niche.name}
                 </div>
-                <div className="text-xs text-text-secondary">
+                <div className="text-xs text-gray-400">
                   {niche.category} • {niche.books_count.toLocaleString()} books
                 </div>
               </div>
-              <div className={`badge ${
-                niche.opportunity_score >= 71 ? 'badge-green' : 
-                niche.opportunity_score >= 41 ? 'badge-amber' : 'badge-red'
+              <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium ${
+                niche.opportunity_score >= 71 ? 'bg-green-500/15 text-green-400' : 
+                niche.opportunity_score >= 41 ? 'bg-yellow-500/15 text-yellow-400' : 'bg-red-500/15 text-red-400'
               }`}>
                 {niche.opportunity_score}
-              </div>
+              </span>
             </button>
           ))}
         </div>
       )}
 
       <div className="mt-4 flex flex-wrap justify-center gap-2">
-        <span className="text-xs text-text-secondary">Popular:</span>
-        {['Senior dog care', 'FIRE movement', 'Keto diet', 'Imposter syndrome'].map((term) => (
+        <span className="text-xs text-gray-400">Popular:</span>
+        {['dog care', 'budgeting', 'keto diet', 'anxiety'].map((term) => (
           <button
             key={term}
             onClick={() => {
               setQuery(term);
               onSearch(term);
             }}
-            className="text-xs px-2 py-1 rounded-full bg-bg-tertiary text-text-secondary hover:text-accent-blue hover:bg-bg-tertiary/80 transition-colors"
+            className="text-xs px-2 py-1 rounded-full bg-gray-700 text-gray-400 hover:text-blue-400 hover:bg-gray-600 transition-colors"
           >
             {term}
           </button>
