@@ -1,6 +1,6 @@
 import type { Category, Niche, Keyword, Trend, Competition, NicheFilters, NicheResponse, Stats } from '../types';
 
-const API_BASE = 'http://localhost:3001/api';
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 async function fetchApi<T>(endpoint: string): Promise<T> {
   const response = await fetch(`${API_BASE}${endpoint}`);

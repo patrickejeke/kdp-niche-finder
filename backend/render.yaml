@@ -1,0 +1,7 @@
+{
+  "name": "kdp-niche-finder-api",
+  "runtime": "node",
+  "region": "oregon",
+  "buildCommand": "npm install",
+  "startCommand": "npm start"
+}
